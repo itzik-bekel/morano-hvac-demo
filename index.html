@@ -47,11 +47,11 @@ a{text-decoration:none;color:inherit}
 /* NAV */
 nav{position:fixed;inset-block-start:0;inset-inline:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);transition:.3s;border-bottom:1px solid transparent}
 nav.scrolled{border-bottom-color:var(--line);box-shadow:0 4px 20px rgba(15,23,42,.06)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:20px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;flex-wrap:nowrap}
+.logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:20px;flex-shrink:0}
 .logo .ice{font-size:24px;filter:drop-shadow(0 0 8px rgba(6,182,212,.5))}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{color:var(--navy);font-weight:500;font-size:15px;transition:.2s}
+.nav-links{display:flex;flex-direction:row;align-items:center;gap:22px;list-style:none;flex-wrap:nowrap;margin-inline-start:auto}
+.nav-links a{color:var(--navy);font-weight:500;font-size:14.5px;transition:.2s;white-space:nowrap}
 .nav-links a:hover{color:var(--blue)}
 .nav-cta{background:var(--green);color:#fff!important;padding:10px 20px;border-radius:999px;font-weight:700;display:inline-flex;align-items:center;gap:6px;box-shadow:0 6px 16px rgba(22,163,74,.3);transition:.2s}
 .nav-cta:hover{background:var(--green-dark);transform:translateY(-1px)}
@@ -165,44 +165,55 @@ footer{padding:44px 0 120px;text-align:center;color:var(--muted);font-size:14px}
 .mobile-bar .m-call{background:#eff6ff;color:var(--blue);border:1px solid var(--blue)}
 
 /* WHATSAPP CHAT MOCKUP */
-.wa-wrap{max-width:420px;margin:0 auto;background:#0b141a;border-radius:26px;padding:12px;box-shadow:var(--shadow-lg);border:6px solid #111b21}
-.wa-head{background:#202c33;border-radius:18px 18px 0 0;padding:12px 16px;display:flex;align-items:center;gap:12px;color:#e9edef}
-.wa-head .avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(140deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:20px}
-.wa-head .who b{display:block;font-size:15px}
-.wa-head .who small{color:#8696a0;font-size:12px}
-.wa-body{background:#0b141a;background-image:linear-gradient(rgba(11,20,26,.96),rgba(11,20,26,.96));padding:16px 12px;display:flex;flex-direction:column;gap:8px;height:540px;overflow-y:auto;scroll-behavior:smooth}
-.wa-body::-webkit-scrollbar{width:6px}.wa-body::-webkit-scrollbar-thumb{background:#334;border-radius:3px}
-.bub{max-width:82%;padding:8px 12px;border-radius:12px;font-size:14px;line-height:1.5;position:relative;white-space:pre-line;animation:pop .4s ease both}
-.bub.in{align-self:flex-start;background:#202c33;color:#e9edef;border-top-inline-start-radius:2px}
-.bub.out{align-self:flex-end;background:#005c4b;color:#e9edef;border-top-inline-end-radius:2px}
-.bub .time{display:block;font-size:10px;color:#ffffff80;text-align:end;margin-top:2px}
+.wa-wrap{max-width:400px;margin:0 auto;background:#111b21;border-radius:30px;padding:10px;box-shadow:var(--shadow-lg),0 0 0 10px #1c2a33;border:2px solid #0a1014}
+.wa-head{background:#202c33;border-radius:22px 22px 0 0;padding:12px 16px;display:flex;align-items:center;gap:12px;color:#e9edef}
+.wa-head .back{color:#8696a0;font-size:20px;margin-inline-end:-4px}
+.wa-head .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(140deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0}
+.wa-head .who{flex:1;min-width:0}
+.wa-head .who b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wa-head .who small{color:#8696a0;font-size:12px;transition:.2s}
+.wa-head .who small.typing{color:#25d366}
+.wa-head .hicons{color:#8696a0;font-size:16px;display:flex;gap:16px}
+.wa-body{background-color:#0b141a;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23131f27' fill-opacity='0.6'%3E%3Cpath d='M12 8c2 0 3 1 3 3s-1 3-3 3M45 20l3 3M30 44c-2 0-4-1-4-4M50 48c1-2 3-2 4 0'/%3E%3Ccircle cx='20' cy='40' r='2'/%3E%3Ccircle cx='48' cy='12' r='1.5'/%3E%3C/g%3E%3C/svg%3E");padding:16px 12px;display:flex;flex-direction:column;gap:6px;height:520px;overflow-y:auto;scroll-behavior:smooth}
+.wa-body::-webkit-scrollbar{width:5px}.wa-body::-webkit-scrollbar-thumb{background:#2a3942;border-radius:3px}
+.wa-day{align-self:center;background:#182229;color:#8696a0;font-size:11px;padding:4px 12px;border-radius:8px;margin-bottom:4px}
+.bub{max-width:80%;padding:7px 10px 6px;border-radius:10px;font-size:14px;line-height:1.5;position:relative;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.2);animation:pop .3s ease both}
+.bub.in{align-self:flex-start;background:#202c33;color:#e9edef;border-top-inline-start-radius:3px}
+.bub.out{align-self:flex-end;background:#005c4b;color:#e9edef;border-top-inline-end-radius:3px}
+.bub .time{display:inline-block;font-size:10px;color:#ffffff80;margin-inline-start:8px;float:inline-end;position:relative;top:6px}
 .bub.out .time::after{content:" ✓✓";color:#53bdeb}
 .bub .menu{margin-top:6px;border-top:1px solid #ffffff1a;padding-top:6px;font-size:13.5px}
-.bub.photo{padding:6px}
-.bub.photo .ph{background:linear-gradient(160deg,#1f2c33,#2a3942);border-radius:8px;height:120px;display:flex;align-items:center;justify-content:center;font-size:40px}
-.wa-typing{align-self:flex-start;background:#202c33;border-radius:12px;padding:12px 14px;display:flex;gap:4px}
-.wa-typing span{width:7px;height:7px;border-radius:50%;background:#8696a0;animation:blink 1.4s infinite both}
+.bub.photo{padding:4px}
+.bub.photo .ph{background:linear-gradient(160deg,#1f2c33,#2a3942);border-radius:7px;height:130px;width:150px;display:flex;align-items:center;justify-content:center;font-size:44px}
+.wa-typing{align-self:flex-start;background:#202c33;border-radius:10px;padding:11px 14px;display:flex;gap:4px;box-shadow:0 1px 1px rgba(0,0,0,.2);animation:pop .3s ease both}
+.wa-typing span{width:7px;height:7px;border-radius:50%;background:#8696a0;animation:blink 1.3s infinite both}
 .wa-typing span:nth-child(2){animation-delay:.2s}.wa-typing span:nth-child(3){animation-delay:.4s}
+.wa-foot{background:#202c33;border-radius:0 0 22px 22px;padding:9px 14px;display:flex;align-items:center;gap:10px;color:#8696a0}
+.wa-foot .inp{flex:1;background:#2a3942;border-radius:20px;padding:9px 14px;font-size:13px}
+.wa-foot .mic{width:38px;height:38px;border-radius:50%;background:#00a884;color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.wa-replay{display:block;margin:18px auto 0;background:var(--surface);border:1px solid var(--line);color:var(--blue);font-weight:700;font-size:14px;padding:9px 20px;border-radius:999px;cursor:pointer;box-shadow:var(--shadow);transition:.2s}
+.wa-replay:hover{border-color:var(--blue);transform:translateY(-1px)}
 @keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
-@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
 
 /* ANIMATIONS */
 .reveal{opacity:0;transform:translateY(24px);transition:.6s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 
 /* RESPONSIVE */
-@media(max-width:900px){
+@media(max-width:1024px){
   .hero{grid-template-columns:1fr;gap:36px}
   .hero-visual{order:-1}
   .cols-3,.steps{grid-template-columns:1fr}
   .cols-2{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:repeat(2,1fr);gap:26px}
-  .nav-links{position:fixed;inset-block-start:68px;inset-inline:0;background:#fff;flex-direction:column;padding:20px;gap:18px;border-bottom:1px solid var(--line);transform:translateY(-140%);transition:.3s;box-shadow:var(--shadow)}
+  .stats-grid{grid-template-columns:repeat(3,1fr);gap:18px}
+  .nav-links{position:fixed;inset-block-start:68px;inset-inline:0;background:#fff;flex-direction:column;padding:20px;gap:18px;border-bottom:1px solid var(--line);transform:translateY(-140%);transition:.3s;box-shadow:var(--shadow);margin-inline-start:0}
   .nav-links.open{transform:none}
   .hamburger{display:flex}
   .mobile-bar{display:flex}
   footer{padding-bottom:100px}
 }
+@media(max-width:520px){.stats-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -366,51 +377,22 @@ footer{padding:44px 0 120px;text-align:center;color:var(--muted);font-size:14px}
     </div>
     <div class="wa-wrap reveal">
       <div class="wa-head">
+        <span class="back">‹</span>
         <div class="avatar">❄️</div>
-        <div class="who"><b>מורנו מיזוג אוויר</b><small>עוזר חכם · מקוון עכשיו</small></div>
+        <div class="who"><b>מורנו מיזוג אוויר</b><small id="waStatus">מקוון</small></div>
+        <div class="hicons"><span>📹</span><span>📞</span></div>
       </div>
       <div class="wa-body" id="waBody">
-        <div class="bub out">היי, קוראים לי דנה. המזגן בסלון עשה רעש מוזר ופתאום הפסיק לקרר 😩<span class="time">21:03</span></div>
-        <div class="bub in">היי דנה! 👋 נעים מאוד, אני העוזר הדיגיטלי של מורנו מיזוג אוויר. אאסוף ממך כמה פרטים כדי שנוכל לעזור מהר. במה מדובר? השב/י עם מספר:<span class="menu">1️⃣ דיווח תקלה
-2️⃣ מחיר / הצעת מחיר
-3️⃣ לדבר עם הטכנאי 📞</span><span class="time">21:03</span></div>
-        <div class="bub out">1<span class="time">21:03</span></div>
-        <div class="bub in">מצוין. מה סוג התקלה? השב/י עם מספר:<span class="menu">1️⃣ המזגן לא נדלק בכלל
-2️⃣ לא מקרר / לא מחמם
-3️⃣ נזילת מים
-4️⃣ רעש חריג
-5️⃣ אחר</span><span class="time">21:04</span></div>
-        <div class="bub out">2<span class="time">21:04</span></div>
-        <div class="bub in">הבנתי. הרעש שהזכרת — נשמע כמו שריקה, נקישות, או רעד? (עוזר לי להבין את התקלה) 🔍<span class="time">21:04</span></div>
-        <div class="bub out">נקישות חזקות ואז המזגן נדם לגמרי<span class="time">21:05</span></div>
-        <div class="bub in">תודה. תוכלי לשלוח תמונה של המזגן, ותמונה של המדבקה עם הדגם? (בד"כ בצד ימין של היחידה) 📷<span class="time">21:05</span></div>
-        <div class="bub out photo"><div class="ph">🖼️</div><span class="time">21:06</span></div>
-        <div class="bub out photo"><div class="ph">🏷️</div><span class="time">21:06</span></div>
-        <div class="bub in">מעולה, זיהיתי: Electra Titanium Inverter ✅
-לפי התיאור נראה שהמאוורר הפנימי נתקע — הטכנאי יגיע מוכן עם החלקים המתאימים.<span class="time">21:06</span></div>
-        <div class="bub in">כמה דחוף מבחינתך? השב/י עם מספר:<span class="menu">1️⃣ דחוף – אין קירור בכלל 🔥
-2️⃣ מפריע אבל אפשר לחכות
-3️⃣ תחזוקה מתוכננת</span><span class="time">21:06</span></div>
-        <div class="bub out">1 — יש לי תינוקת בבית והחום ממש קשה 🥵<span class="time">21:07</span></div>
-        <div class="bub in">מבינה לגמרי, נדאג לך בהקדם 🙏 מה הכתובת המלאה? (עיר + רחוב + מספר) 📍<span class="time">21:07</span></div>
-        <div class="bub out">רמת גן, ביאליק 22, קומה 3<span class="time">21:08</span></div>
-        <div class="bub in">יש גישה נוחה למזגן? (מרפסת / מדרגות)<span class="time">21:08</span></div>
-        <div class="bub out">כן, מהמרפסת<span class="time">21:08</span></div>
-        <div class="bub in">מעולה. על שם מי לרשום את הקריאה, ומה מספר טלפון לחזרה?<span class="time">21:09</span></div>
-        <div class="bub out">דנה לוי, 052-000-0000<span class="time">21:09</span></div>
-        <div class="bub in">תודה דנה! ומתי הכי נוח שנגיע?<span class="menu">1️⃣ היום  2️⃣ מחר  3️⃣ השבוע  4️⃣ גמיש</span><span class="time">21:09</span></div>
-        <div class="bub out">1, כמה שיותר מוקדם 🙏<span class="time">21:10</span></div>
-        <div class="bub in">קיבלנו את כל הפרטים! ✅
-
-📋 *סיכום הקריאה:*
-• תקלה: Electra Titanium לא מקרר + נקישות
-• דחיפות: דחוף 🔥 (תינוקת בבית)
-• כתובת: רמת גן, ביאליק 22, קומה 3 (גישה מהמרפסת)
-• שם: דנה לוי · 052-000-0000
-
-מורנו קיבל את הפנייה *ויחזור אליך לתיאום תוך 1–2 שעות*. נעדכן אותך כאן ברגע שתיקבע שעה מדויקת. שיהיה יום קריר ונעים! ❄️<span class="time">21:10</span></div>
+        <div class="wa-day">היום</div>
+      </div>
+      <div class="wa-foot">
+        <span>😊</span>
+        <div class="inp">הודעה</div>
+        <span>📎</span><span>📷</span>
+        <div class="mic">🎤</div>
       </div>
     </div>
+    <button class="wa-replay reveal" id="waReplay">▶ הפעל שיחה מחדש</button>
   </div>
 </section>
 
@@ -515,22 +497,75 @@ const countIO=new IntersectionObserver((entries)=>{
 },{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el));
 
-// WhatsApp dialog: reveal bubbles one-by-one for a "live" feel
+// WhatsApp dialog: realistic replay engine with typing indicator
 const waBody=document.getElementById('waBody');
+const waStatus=document.getElementById('waStatus');
+const waReplay=document.getElementById('waReplay');
 if(waBody){
-  const bubs=[...waBody.children];
-  bubs.forEach(b=>{b.style.opacity='0';b.style.animation='none'});
-  const waIO=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting)return;
-      bubs.forEach((b,i)=>setTimeout(()=>{
-        b.style.animation='';b.style.opacity='';
-        waBody.scrollTo({top:waBody.scrollHeight,behavior:'smooth'});
-      },i*550));
-      waIO.unobserve(e.target);
-    });
-  },{threshold:.25});
+  const script=[
+    {s:'out',t:'היי, קוראים לי דנה. המזגן בסלון עשה רעש מוזר ופתאום הפסיק לקרר 😩',time:'21:03'},
+    {s:'in',t:'היי דנה! 👋 נעים מאוד, אני העוזר הדיגיטלי של מורנו מיזוג אוויר. אאסוף כמה פרטים כדי שנעזור מהר. במה מדובר?',menu:'1️⃣ דיווח תקלה\n2️⃣ מחיר / הצעת מחיר\n3️⃣ לדבר עם הטכנאי 📞',time:'21:03'},
+    {s:'out',t:'1',time:'21:03'},
+    {s:'in',t:'מצוין. מה סוג התקלה?',menu:'1️⃣ המזגן לא נדלק בכלל\n2️⃣ לא מקרר / לא מחמם\n3️⃣ נזילת מים\n4️⃣ רעש חריג\n5️⃣ אחר',time:'21:04'},
+    {s:'out',t:'2',time:'21:04'},
+    {s:'in',t:'הבנתי. הרעש נשמע כמו שריקה, נקישות, או רעד? 🔍',time:'21:04'},
+    {s:'out',t:'נקישות חזקות ואז המזגן נדם לגמרי',time:'21:05'},
+    {s:'in',t:'תודה. תוכלי לשלוח תמונה של המזגן, ותמונה של המדבקה עם הדגם? 📷',time:'21:05'},
+    {s:'out',photo:'🖼️',time:'21:06'},
+    {s:'out',photo:'🏷️',time:'21:06'},
+    {s:'in',t:'מעולה, זיהיתי: Electra Titanium Inverter ✅\nלפי התיאור נראה שהמאוורר הפנימי נתקע — הטכנאי יגיע מוכן עם החלקים המתאימים.',time:'21:06'},
+    {s:'in',t:'כמה דחוף מבחינתך?',menu:'1️⃣ דחוף – אין קירור בכלל 🔥\n2️⃣ מפריע אבל אפשר לחכות\n3️⃣ תחזוקה מתוכננת',time:'21:06'},
+    {s:'out',t:'1 — יש לי תינוקת בבית והחום ממש קשה 🥵',time:'21:07'},
+    {s:'in',t:'מבינה לגמרי, נדאג לך בהקדם 🙏 מה הכתובת המלאה? (עיר + רחוב + מספר) 📍',time:'21:07'},
+    {s:'out',t:'רמת גן, ביאליק 22, קומה 3',time:'21:08'},
+    {s:'in',t:'יש גישה נוחה למזגן? (מרפסת / מדרגות)',time:'21:08'},
+    {s:'out',t:'כן, מהמרפסת',time:'21:08'},
+    {s:'in',t:'מעולה. על שם מי לרשום את הקריאה, ומה טלפון לחזרה?',time:'21:09'},
+    {s:'out',t:'דנה לוי, 052-000-0000',time:'21:09'},
+    {s:'in',t:'תודה דנה! ומתי הכי נוח שנגיע?',menu:'1️⃣ היום  2️⃣ מחר  3️⃣ השבוע  4️⃣ גמיש',time:'21:09'},
+    {s:'out',t:'1, כמה שיותר מוקדם 🙏',time:'21:10'},
+    {s:'in',t:'קיבלנו את כל הפרטים! ✅\n\n📋 סיכום הקריאה:\n• תקלה: Electra Titanium לא מקרר + נקישות\n• דחיפות: דחוף 🔥 (תינוקת בבית)\n• כתובת: רמת גן, ביאליק 22, קומה 3\n• שם: דנה לוי · 052-000-0000\n\nמורנו קיבל את הפנייה ויחזור אליך לתיאום תוך 1–2 שעות. שיהיה יום קריר ונעים! ❄️',time:'21:10'}
+  ];
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const scroll=()=>waBody.scrollTo({top:waBody.scrollHeight,behavior:'smooth'});
+  let running=false;
+
+  async function play(){
+    if(running)return; running=true;
+    waReplay.style.display='none';
+    waBody.querySelectorAll('.bub,.wa-typing').forEach(n=>n.remove());
+    for(const m of script){
+      if(m.s==='in'){
+        waStatus.textContent='מקליד/ה…'; waStatus.classList.add('typing');
+        const typ=document.createElement('div'); typ.className='wa-typing';
+        typ.innerHTML='<span></span><span></span><span></span>';
+        waBody.appendChild(typ); scroll();
+        await sleep(650+Math.min((m.t||'').length*14,1100));
+        typ.remove();
+        waStatus.textContent='מקוון'; waStatus.classList.remove('typing');
+      }else{
+        await sleep(500);
+      }
+      const b=document.createElement('div');
+      b.className='bub '+m.s+(m.photo?' photo':'');
+      let html=m.photo?('<div class="ph">'+m.photo+'</div>'):esc(m.t);
+      if(m.menu)html+='<span class="menu">'+esc(m.menu)+'</span>';
+      html+='<span class="time">'+m.time+'</span>';
+      b.innerHTML=html;
+      waBody.appendChild(b); scroll();
+      await sleep(260);
+    }
+    running=false;
+    waReplay.style.display='block';
+  }
+  waReplay.addEventListener('click',play);
+  let started=false;
+  const startOnce=()=>{if(!started){started=true;play();}};
+  const waIO=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)startOnce();});},{threshold:.3});
   waIO.observe(waBody);
+  // Fallback: start shortly after load even if observer doesn't fire
+  setTimeout(()=>{const r=waBody.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)startOnce();},1200);
 }
 </script>
 </body>
